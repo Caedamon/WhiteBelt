@@ -1,10 +1,8 @@
-﻿using System;
-
-class Program
+﻿class Program
 {
     static void Main(string[] args)
     {
-        string name; "Trimmy Malone";
+        string name = "Trimmy Malone";
         int healthPoints = 100;
         float attackPower = 30.5f;
         bool isParalyzed = false;
@@ -24,7 +22,5 @@ class Program
         int attackPowerInt = (int)attackPower;
         Console.WriteLine("Implicit Conversion:");
         Console.WriteLine($"Attack Power as Int: {attackPowerInt}");
-        
-        
     }
 }
