@@ -26,32 +26,35 @@ class Program
         Random random = new Random();
         
         CharValues Hero = new CharValues();
-        Hero.name = "Jim, The Hero";
-        Hero.healthPoints = 80;
-        Hero.attackPower = 15f;
-        Hero.dodgeChance = 10;
+        {
+            Hero.name = "Jim, The Hero";
+            Hero.healthPoints = 80;
+            Hero.attackPower = 15f;
+            Hero.dodgeChance = 10;
+        }
         
         CharValues Goblin = new CharValues();
-        Goblin.name = "Goblin";
-        Goblin.healthPoints = 50;
-        Goblin.attackPower = 10f;
-        Goblin.dodgeChance = 30;
-
-        Hero.PrintStats();
-        Goblin.PrintStats();
-        Console.WriteLine("Next");
-        Console.ReadKey();
-        Console.Clear();
+        {
+            Goblin.name = "Goblin";
+            Goblin.healthPoints = 50;
+            Goblin.attackPower = 10f;
+            Goblin.dodgeChance = 30;
+        }
         
-        Console.WriteLine("You are beeing attacked by a Goblin! Defeat it!");
+        Hero.PrintStats();
+        Console.WriteLine();
+        Goblin.PrintStats();
+
+        Console.WriteLine("You are being attacked by a Goblin! Defeat it!");
+        Console.ReadKey();
 
         while (Hero.healthPoints > 0 && Goblin.healthPoints > 0)
         {
-            Console.WriteLine("\nCurrent Stats:");
-            Hero.PrintStats();
-            Goblin.PrintStats();
+            Console.Clear();
             
-            Console.WriteLine("Chose an action!");
+            Console.WriteLine($"\nHero's Health: {Hero.healthPoints} \nGoblin's Health: {Goblin.healthPoints}");
+            
+            Console.WriteLine("\nChose an action!");
             Console.WriteLine("1. Attack");
             Console.WriteLine("2. Heal");
             Console.Write("> ");
@@ -91,8 +94,7 @@ class Program
                 Console.WriteLine("Loot and Gloory await you back in town!");
                 break;
             }
-                
-                
+
             Console.WriteLine("The Goblin, fearing for its life! Attacks!");
 
             if (Hero.TryDodge(random))
@@ -112,11 +114,11 @@ class Program
                 Console.WriteLine("*** The Hero Has Ended Up As A Snack For The Goblin***");
                 break;
             }
-            
-            
-            Console.WriteLine("Game over, it was fun! (Press any key to quit)");
-            Console.ReadKey();
+            Console.WriteLine("\nPress Enter to continue to the next turn...");
+            Console.ReadLine();
         }
+        Console.WriteLine("Game over, it was fun! (Press any key to quit)");
+        Console.ReadKey();
     }
 }
 
