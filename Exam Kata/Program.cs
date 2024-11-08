@@ -1,17 +1,4 @@
-﻿// Requirements:
-//
-// Initialize the player's and enemy's stats (health, attack power, etc.).
-// In a loop:
-// Display each character's current health.
-//     Ask the player to choose an action (attack or heal).
-//     If the player chooses to attack, reduce the enemy’s health.
-//     If the player chooses to heal, increase the player’s health.
-//     Display messages reflecting each choice.
-//     Automatically have the enemy attack the player after the player’s turn.
-//     Check if either character’s health is 0 or below after each action and end the game if so.
-//     Display a win or loss message depending on the outcome.
-
-public class CharValues
+﻿public class CharValues
 {
     public string name;
     public int healthPoints;
@@ -39,7 +26,7 @@ class Program
         Random random = new Random();
         
         CharValues Hero = new CharValues();
-        Hero.name = "Jim";
+        Hero.name = "Jim, The Hero";
         Hero.healthPoints = 80;
         Hero.attackPower = 15f;
         Hero.dodgeChance = 10;
@@ -92,8 +79,20 @@ class Program
             else
             {
                 Console.WriteLine($"{choise}??? the hell is that! Try again! 1, or 2 damnit!");
+                continue; 
+                //should i have this? i mean if you "fugg upp" during combat, you will give the enemy a free turn...
+                //is it cheating? xD
             }
-            
+
+            if (Goblin.healthPoints <= 0)
+            {
+                Console.WriteLine("\nAfter a brutal and gruesome battle.");
+                Console.WriteLine("You stand Victorious over the vanquished Goblin!");
+                Console.WriteLine("Loot and Gloory await you back in town!");
+                break;
+            }
+                
+                
             Console.WriteLine("The Goblin, fearing for its life! Attacks!");
 
             if (Hero.TryDodge(random))
@@ -111,10 +110,11 @@ class Program
                 Console.WriteLine("The Goblins power is to much for you!");
                 Console.WriteLine("Weather due to Luck or skill on its part, you succumb to its wounds");
                 Console.WriteLine("*** The Hero Has Ended Up As A Snack For The Goblin***");
+                break;
             }
             
             
-            Console.WriteLine("Press any key to quit...");
+            Console.WriteLine("Game over, it was fun! (Press any key to quit)");
             Console.ReadKey();
         }
     }
