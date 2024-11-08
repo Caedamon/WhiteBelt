@@ -94,8 +94,26 @@ class Program
                 Console.WriteLine($"{choise}??? the hell is that! Try again! 1, or 2 damnit!");
             }
             
-            Console.WriteLine("");
+            Console.WriteLine("The Goblin, fearing for its life! Attacks!");
+
             if (Hero.TryDodge(random))
+            {
+                Console.WriteLine("You managed to dodge the attack!");
+            }
+            else
+            {
+                Hero.healthPoints -= (int)Goblin.attackPower;
+                Console.WriteLine($"The goblin smashes in to you and deals {Goblin.attackPower} damage!");
+            }
+
+            if (Hero.healthPoints <= 0)
+            {
+                Console.WriteLine("The Goblins power is to much for you!");
+                Console.WriteLine("Weather due to Luck or skill on its part, you succumb to its wounds");
+                Console.WriteLine("*** The Hero Has Ended Up As A Snack For The Goblin***");
+            }
+            
+            
             Console.WriteLine("Press any key to quit...");
             Console.ReadKey();
         }
